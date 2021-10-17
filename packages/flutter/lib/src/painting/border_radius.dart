@@ -290,9 +290,7 @@ class BorderRadius extends BorderRadiusGeometry {
   );
 
   /// Creates a border radius where all radii are [Radius.circular(radius)].
-  BorderRadius.circular(double radius) : this.all(
-    Radius.circular(radius),
-  );
+  const factory BorderRadius.circular(double radius) = _CircularBorderRadius;
 
   /// Creates a vertically symmetric border radius where the top and bottom
   /// sides of the rectangle have the same radii.
@@ -871,4 +869,141 @@ class _MixedBorderRadius extends BorderRadiusGeometry {
         );
     }
   }
+}
+
+class _CircularBorderRadius extends BorderRadius {
+  const _CircularBorderRadius(this._radius): super.only();
+
+  final double _radius;
+
+  @override
+  BorderRadius copyWith({
+    Radius? topLeft,
+    Radius? topRight,
+    Radius? bottomLeft,
+    Radius? bottomRight,
+  }) {
+    final Radius radius = Radius.circular(_radius);
+    return BorderRadius.only(
+      topLeft: topLeft ?? radius,
+      topRight: topRight ?? radius,
+      bottomLeft: bottomLeft ?? radius,
+      bottomRight: bottomRight ?? radius,
+    );
+  }
+
+  @override
+  Radius get topLeft => Radius.circular(_radius);
+
+  @override
+  Radius get _topLeft => topLeft;
+
+  @override
+  Radius get topRight => Radius.circular(_radius);
+
+  @override
+  Radius get _topRight => topRight;
+
+  @override
+  Radius get bottomLeft => Radius.circular(_radius);
+
+  @override
+  Radius get _bottomLeft => bottomLeft;
+
+  @override
+  Radius get bottomRight => Radius.circular(_radius);
+
+  @override
+  Radius get _bottomRight => bottomRight;
+
+  @override
+  Radius get _topStart => Radius.zero;
+
+  @override
+  Radius get _topEnd => Radius.zero;
+
+  @override
+  Radius get _bottomStart => Radius.zero;
+
+  @override
+  Radius get _bottomEnd => Radius.zero;
+
+  @override
+  RRect toRRect(Rect rect) {
+    final Radius radius = Radius.circular(_radius);
+    return RRect.fromRectAndCorners(
+      rect,
+      topLeft: radius,
+      topRight: radius,
+      bottomLeft: radius,
+      bottomRight: radius,
+    );
+  }
+
+  @override
+  BorderRadiusGeometry subtract(BorderRadiusGeometry other) {
+    if (other is BorderRadius)
+      return this - other;
+    return super.subtract(other);
+  }
+
+  @override
+  BorderRadiusGeometry add(BorderRadiusGeometry other) {
+    if (other is BorderRadius)
+      return this + other;
+    return super.add(other);
+  }
+
+  @override
+  BorderRadius operator -(BorderRadius other) {
+    final Radius radius = Radius.circular(_radius);
+    return BorderRadius.only(
+      topLeft: radius - other.topLeft,
+      topRight: radius - other.topRight,
+      bottomLeft: radius - other.bottomLeft,
+      bottomRight: radius - other.bottomRight,
+    );
+  }
+
+  @override
+  BorderRadius operator +(BorderRadius other) {
+    final Radius radius = Radius.circular(_radius);
+    return BorderRadius.only(
+      topLeft: radius + other.topLeft,
+      topRight: radius + other.topRight,
+      bottomLeft: radius + other.bottomLeft,
+      bottomRight: radius + other.bottomRight,
+    );
+  }
+
+  @override
+  BorderRadius operator -() {
+    return BorderRadius.circular(-_radius);
+  }
+
+  @override
+  BorderRadius operator *(double other) {
+    return BorderRadius.circular(_radius * other);
+  }
+
+  @override
+  BorderRadius operator /(double other) {
+    return BorderRadius.circular(_radius / other);
+  }
+
+  @override
+  BorderRadius operator ~/(double other) {
+    return BorderRadius.circular((_radius ~/ other).toDouble());
+  }
+
+  @override
+  BorderRadius operator %(double other) {
+    return BorderRadius.circular( _radius % other);
+  }
+
+  @override
+  BorderRadius resolve(TextDirection? direction) => this;
+
+  @override
+  Type get runtimeType => BorderRadius;
 }
