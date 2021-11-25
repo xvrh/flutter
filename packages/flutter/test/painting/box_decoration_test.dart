@@ -71,7 +71,7 @@ void main() {
 
   test('BoxDecoration.getClipPath with borderRadius', () {
     const double radius = 10;
-    final BoxDecoration decoration = BoxDecoration(
+    const BoxDecoration decoration = BoxDecoration(
       borderRadius: BorderRadius.circular(radius),
     );
     const Rect rect = Rect.fromLTWH(0.0, 0.0, 100.0, 20.0);

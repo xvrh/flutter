@@ -3533,7 +3533,7 @@ void main() {
         home: Scaffold(
           body: Center(
             child: DropdownButton<String>(
-              borderRadius: BorderRadius.circular(radius),
+              borderRadius: const BorderRadius.circular(radius),
               value: 'One',
               items: <String>['One', 'Two', 'Three', 'Four']
                 .map<DropdownMenuItem<String>>((String value) {

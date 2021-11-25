@@ -18,7 +18,7 @@ void main() {
     expect(borderRadius.bottomRight, const Radius.elliptical(5.0, 7.0));
     expect(borderRadius.toRRect(rect), RRect.fromRectXY(rect, 5.0, 7.0));
 
-    borderRadius = BorderRadius.circular(3.0);
+    borderRadius = const BorderRadius.circular(3.0);
     expect(borderRadius, hasOneLineDescription);
     expect(borderRadius.topLeft, const Radius.elliptical(3.0, 3.0));
     expect(borderRadius.topRight, const Radius.elliptical(3.0, 3.0));
@@ -111,28 +111,28 @@ void main() {
     );
 
     expect(
-      BorderRadius.circular(15.0) / 10.0,
-      BorderRadius.circular(1.5),
+      const BorderRadius.circular(15.0) / 10.0,
+      const BorderRadius.circular(1.5),
     );
 
     expect(
-      BorderRadius.circular(15.0) ~/ 10.0,
-      BorderRadius.circular(1.0),
+      const BorderRadius.circular(15.0) ~/ 10.0,
+      const BorderRadius.circular(1.0),
     );
 
     expect(
-      BorderRadius.circular(15.0) % 10.0,
-      BorderRadius.circular(5.0),
+      const BorderRadius.circular(15.0) % 10.0,
+      const BorderRadius.circular(5.0),
     );
   });
 
   test('BorderRadius.lerp() invariants', () {
-    final BorderRadius a = BorderRadius.circular(10.0);
-    final BorderRadius b = BorderRadius.circular(20.0);
+    const BorderRadius a = BorderRadius.circular(10.0);
+    const BorderRadius b = BorderRadius.circular(20.0);
     expect(BorderRadius.lerp(a, b, 0.25), equals(a * 1.25));
     expect(BorderRadius.lerp(a, b, 0.25), equals(b * 0.625));
-    expect(BorderRadius.lerp(a, b, 0.25), equals(a + BorderRadius.circular(2.5)));
-    expect(BorderRadius.lerp(a, b, 0.25), equals(b - BorderRadius.circular(7.5)));
+    expect(BorderRadius.lerp(a, b, 0.25), equals(a + const BorderRadius.circular(2.5)));
+    expect(BorderRadius.lerp(a, b, 0.25), equals(b - const BorderRadius.circular(7.5)));
 
     expect(BorderRadius.lerp(null, null, 0.25), isNull);
     expect(BorderRadius.lerp(null, b, 0.25), equals(b * 0.25));

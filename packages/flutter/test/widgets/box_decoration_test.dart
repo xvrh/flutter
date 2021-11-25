@@ -393,7 +393,7 @@ Future<void> main() async {
             key: key,
             width: width,
             height: height,
-            decoration: BoxDecoration(border: border,borderRadius: BorderRadius.circular(radius)),
+            decoration: BoxDecoration(border: border, borderRadius: const BorderRadius.circular(radius)),
           ),
           onTap: () {
             itemsTapped.add(1);
@@ -453,7 +453,7 @@ Future<void> main() async {
             key: key,
             width: width,
             height: height,
-            decoration: BoxDecoration(border: border,borderRadius: BorderRadius.circular(radius)),
+            decoration: BoxDecoration(border: border, borderRadius: const BorderRadius.circular(radius)),
           ),
           onTap: () {
             itemsTapped.add(1);
@@ -501,7 +501,7 @@ Future<void> main() async {
             key: key,
             width: width,
             height: height,
-            decoration: BoxDecoration(border: border,borderRadius: BorderRadius.circular(radius)),
+            decoration: BoxDecoration(border: border, borderRadius: const BorderRadius.circular(radius)),
           ),
           onTap: () {
             itemsTapped.add(1);

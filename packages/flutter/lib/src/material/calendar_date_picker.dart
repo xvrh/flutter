@@ -1205,14 +1205,14 @@ class _YearPickerState extends State<YearPicker> {
     if (isSelected) {
       decoration = BoxDecoration(
         color: colorScheme.primary,
-        borderRadius: BorderRadius.circular(decorationHeight / 2),
+        borderRadius: const BorderRadius.circular(decorationHeight / 2),
       );
     } else if (isCurrentYear && !isDisabled) {
       decoration = BoxDecoration(
         border: Border.all(
           color: colorScheme.primary,
         ),
-        borderRadius: BorderRadius.circular(decorationHeight / 2),
+        borderRadius: const BorderRadius.circular(decorationHeight / 2),
       );
     }
 
